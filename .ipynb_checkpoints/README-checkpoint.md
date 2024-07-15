@@ -17,13 +17,14 @@ Please see credit_risk_classification.ipynb for the script which performs all co
 
 In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
 
-Purpose:
+### Purpose:
 The purpose of the analysis in the credit risk project was to determine how accurate the Logistic Regression model was for determining healthy loans and high-risk loans.  As is the purpose of the Logistic Regression model, there are binary outcomes (that is, two possible outcomes) for the data being tested.  So in this project, the outcome for each data record was that it represented either a healthy loan (indicted by 0) or a high-risk loan (indicated by 1). 
 
-* The input data in the lending_data.csv file had a loan_status column to indicate if the loan was healthy (indicated by 0), or high-risk (indicated by 1).  Logisitc Regression is a form of supervised learning, and as is the case with supervised learning models, we know the answer to the question we are analyising (that is we know the loan_status as either a 0 or 1), and we are determining how well the Logistic Regression model predicts the correct outcome, to correctly divide the data into the healthy and high-risk loans.
+### Financial Loan input data for predictions
+The input data in the lending_data.csv file had a loan_status column to indicate if the loan was healthy (indicated by 0), or high-risk (indicated by 1).  Logisitc Regression is a form of supervised learning, and as is the case with supervised learning models, we know the answer to the question we are analyising (that is we know the loan_status as either a 0 or 1), and we are determining how well the Logistic Regression model predicts the correct outcome, to correctly divide the data into the healthy and high-risk loans.
 
-  
-* To create an X and y variable, the loan_status was separated from the lending_data.csv file, with this single column of loan_status data being used as the y variable, which represents the 'target' or 'labels' for the two possible outcomes (healthy loans and high-risk loans.)  The remaining columns of data in the leanding_data.csv file form the X variable 'features' of the loans and include items such as the loan size, interest rate, borrower income, debt to income ratio, and total debt.  
+### Data preparation and machine learning steps used in the analysis
+To create an X and y variable, the loan_status was separated from the lending_data.csv file, with this single column of loan_status data being used as the y variable, which represents the 'target' or 'labels' for the two possible outcomes (healthy loans and high-risk loans.)  The remaining columns of data in the leanding_data.csv file form the X variable 'features' of the loans and include items such as the loan size, interest rate, borrower income, debt to income ratio, and total debt.  
 
 The scikit-learn train_test_split function, then uses the X and y variables to split the data into a train dataset that will teach the Logistic Regression model, and a test dataset that will test the Logistic Regression model after it is trained, with the aim of seeing how accurately the model has been trained. 
 
@@ -33,27 +34,20 @@ The resulting trained Logistic Regression model, is then used to process the tes
 
 If this project, is would appear theat the model was very accurate for the healthy loans and also reasonably accurate for the high-risk loans, as further explained in the Results section below.
 
-To further test the accurany of the model the predictions and actual loan status data were analysed with the Confusion Matrix and the Classification Report functions from scikit learn. 
+To further test the accuracy of the model, the predictions and actual loan status data were analysed with the Confusion Matrix and the Classification Report functions from scikit learn. 
 
 
-## Results
+## Results Analysis using precision and recall scores and accuracy measures
 
-Using bulleted lists, describe the accuracy scores and the precision and recall scores of all machine learning models.
-
-* Machine Learning Model 1:
-    * Description of Model 1 Accuracy, Precision, and Recall scores.
+### Machine Learning Logisitc Regression Model:
  
-    * Using the confusion matrix we can see the majority of records are true-positive records, indicating that 18679 records are healthly loans, and only 558 true-negative records are high-risk loans. This does align with the predictions, that showed the vast majority of loans are healthy loans, and there are far fewer high-risk loans. The remaining records are the 80 false-positve and 67 false-negative records, and it is these records to which further attention needs to be paid, to allow them to be categorised accurately. However, the rows and columns of the matrix both add up to the 19384 records in the model, which is an indicator that the model is generally very accurate.
-
-Using the classification report, we see that the logistic regression model does a very good job at predicting the healthy loans, with the model achieving 100% precision and 100% recall for healthly loans. While the model does have 99% accuracy overall and a weighted average accuracy of 99%, these very high percentages, are potentially skewed by the input data have many more healthy loan records, than high-risk loan records. The macro average accuracy of 94%, and the precision and recall percentages of 87% and 89% respectively for high-risk loans, are indicative of the logistic regression model being slightly less accurate for predicting high-risk loans. So to improve the model further, attention would need to be paid to identifying features that help determine high-risk loans.
+* Using the classification report, we see that this logistic regression model did a very good job at predicting the healthy loans, with the model achieving 100% precision and 100% recall for healthly loans.
+* While the model does have 99% accuracy overall and a weighted average accuracy of 99%, these very high percentages, are potentially skewed by the input data have many more healthy loan records, than high-risk loan records.
+* The macro average accuracy of 94%, and the precision and recall percentages of 87% and 89% respectively for high-risk loans, are indicative of the logistic regression model being slightly less accurate for predicting high-risk loans. So to improve the model further, attention would need to be paid to identifying features that help determine high-risk loans.
 
 ## Summary
 
-Summarise the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
+In summary, the Logistic Regression model did an excellent job at predicting the healthly loans as demonstrated by the accurancy, precision and recall scores noted above. The confusion matrix rows and columns both add to the total of 19384 records in the model, which is another indicator that the model is accurate.  The classification report further indicated that the model does a good job predicting high-risk loan between 88% and 94% of the time.
+This model can be recommended to predict the outcome for loans.  However, further analysis of high-risk home loans is needed, potentially with a more advanced machine learning model, considering more features that indicate tendency for a loan to become high-risk. 
 
-* Which one seems to perform best? How do you know it performs best?
-
-* 
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-
-If you do not recommend any of the models, please justify your reasoning.
+The performance of the model is important, particularly in correctly identifying loan status = 1 for the loans that are high-risk, so that measures can be taken to further analyse characteristics of why the loans and high risk, and to avoid approval of such loans in the further. It would also be useful to further train the model to try to eliminate false positve and false negative predictions.  This would help to ensure that loans are correctly identified as healthy or high-risk, so that appropriate actions can be taken by loan approvers. 
